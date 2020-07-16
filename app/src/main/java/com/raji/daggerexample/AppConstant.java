@@ -6,5 +6,5 @@ package com.raji.daggerexample;
  */
 public class AppConstant {
 
-    public final static String baseURL = "http://jsonplaceholder.typicode.com/";
+    public final static String baseURL = "https://jsonplaceholder.typicode.com/";
 }

@@ -10,7 +10,7 @@ import retrofit2.http.Path;
  */
 public interface ApiService {
 
-    @GET("/user/{id}")
+    @GET("/users/{id}")
     Flowable<User> authenticate(@Path("id") String id);
 
 }

@@ -2,6 +2,7 @@ package com.raji.daggerexample.di;
 
 import androidx.lifecycle.ViewModel;
 
+import com.raji.SessionDataManager;
 import com.raji.daggerexample.ApiService;
 import com.raji.daggerexample.ui.viewmodel.AuthViewModel;
 
@@ -18,10 +19,12 @@ import retrofit2.Retrofit;
 @Module
 public abstract class AuthModule {
 
-    @Binds
+    @Provides
     @IntoMap
     @ViewModelKey(AuthViewModel.class)
-    abstract ViewModel providesAuthViewModel(AuthViewModel authViewModel);
+    static ViewModel providesAuthViewModel(ApiService apiService, SessionDataManager sessionDataManager){
+        return new AuthViewModel(apiService,sessionDataManager);
+    }
 
     @Provides
     static ApiService providesAPiService(Retrofit retrofit) {
