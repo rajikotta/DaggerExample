@@ -25,6 +25,7 @@ public abstract class MainModule {
     @ViewModelKey(ProfileViewModel.class)
     abstract ViewModel bindProfileViewModel(ProfileViewModel profileViewModel);
 
+    @MainScope
     @Provides
     static MainApiService providesMainApiService(Retrofit retrofit) {
         return retrofit.create(MainApiService.class);
@@ -35,6 +36,7 @@ public abstract class MainModule {
     @ViewModelKey(PostViewModel.class)
     abstract ViewModel bindPostViewModel(PostViewModel profileViewModel);
 
+    @MainScope
     @Provides
     static PostRecyclerAdapter providesRVAdapter() {
         return new PostRecyclerAdapter();

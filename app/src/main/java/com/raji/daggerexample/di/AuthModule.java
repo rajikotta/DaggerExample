@@ -25,6 +25,7 @@ public abstract class AuthModule {
         return new AuthViewModel(authApiService, sessionDataManager);
     }
 
+    @AuthScope
     @Provides
     static AuthApiService providesAPiService(Retrofit retrofit) {
         return retrofit.create(AuthApiService.class);

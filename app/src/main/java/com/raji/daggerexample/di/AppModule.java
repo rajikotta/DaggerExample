@@ -11,6 +11,8 @@ import com.raji.daggerexample.AppConstant;
 import com.raji.daggerexample.MyApplication;
 import com.raji.daggerexample.R;
 
+import javax.inject.Singleton;
+
 import dagger.Module;
 import dagger.Provides;
 import retrofit2.Retrofit;
@@ -23,7 +25,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 @Module
 public class AppModule {
-
+    @Singleton
     @Provides
     static RequestOptions providesRequestOptions() {
 
@@ -32,16 +34,19 @@ public class AppModule {
                 error(R.drawable.white_background);
     }
 
+    @Singleton
     @Provides
     static RequestManager providesRequestManager(MyApplication myApplication, RequestOptions requestOptions) {
         return Glide.with(myApplication).applyDefaultRequestOptions(requestOptions);
     }
 
+    @Singleton
     @Provides
     static Drawable providesLogo(MyApplication myApplication) {
         return ContextCompat.getDrawable(myApplication, R.drawable.logo);
     }
 
+    @Singleton
     @Provides
     static Retrofit providesRetrofit() {
         return new Retrofit.Builder().baseUrl(AppConstant.baseURL).
