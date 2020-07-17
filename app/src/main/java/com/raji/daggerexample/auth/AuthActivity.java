@@ -59,7 +59,7 @@ public class AuthActivity extends DaggerAppCompatActivity {
                         break;
                     case LOGOUT:
                         databinding.progressBar.setVisibility(View.GONE);
-                        Toast.makeText(AuthActivity.this, "not authenticated", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AuthActivity.this, "logout", Toast.LENGTH_SHORT).show();
                         break;
 
                     default:

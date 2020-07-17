@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.navigation.NavController;
+import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
 
@@ -73,15 +74,26 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
 
         switch (item.getItemId()) {
             case R.id.profile:
-                Navigation.findNavController(this, R.id.nav_host).navigate(R.id.profilefragment);
+                NavOptions navOptions = new NavOptions.Builder()
+                        .setPopUpTo(R.id.main_nav, true)
+                        .build();
+
+
+                Navigation.findNavController(this, R.id.nav_host).navigate(R.id.profilefragment, null, navOptions);
                 break;
             case R.id.posts:
-                Navigation.findNavController(this, R.id.nav_host).navigate(R.id.postfragment);
+                if (isValidDestination(R.id.postfragment)) {
+                    Navigation.findNavController(this, R.id.nav_host).navigate(R.id.postfragment);
+                }
                 break;
         }
         item.setChecked(true);
         databinding.drawerLayout.closeDrawer(GravityCompat.START);
         return false;
+    }
+
+    private boolean isValidDestination(int destination) {
+        return destination != Navigation.findNavController(this, R.id.nav_host).getCurrentDestination().getId();
     }
 
     @Override
