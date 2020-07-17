@@ -1,6 +1,7 @@
 package com.raji.daggerexample.di;
 
-import com.raji.daggerexample.ui.AuthActivity;
+import com.raji.daggerexample.auth.AuthActivity;
+import com.raji.daggerexample.main.MainActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;
@@ -13,4 +14,7 @@ import dagger.android.ContributesAndroidInjector;
 public abstract class ActivityBuilderModule {
     @ContributesAndroidInjector(modules = {AuthModule.class})
     abstract AuthActivity contributeAuthActivity();
+
+    @ContributesAndroidInjector(modules = {FragmentBuilderModule.class, MainModule.class})
+    abstract MainActivity contributeMainActivity();
 }

@@ -1,4 +1,4 @@
-package com.raji.daggerexample;
+package com.raji.daggerexample.auth;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -19,16 +19,20 @@ public class User {
     @SerializedName("email")
     @Expose
     private String emailID;
+    @SerializedName("website")
+    @Expose
+    private String website;
 
-
-    public User(String id, String name, String emailID) {
-        this.id = id;
-        this.name = name;
-        this.emailID = emailID;
-    }
 
     public User(String id) {
         this.id = id;
+    }
+
+    public User(String id, String name, String emailID, String website) {
+        this.id = id;
+        this.name = name;
+        this.emailID = emailID;
+        this.website = website;
     }
 
     public String getId() {
@@ -53,5 +57,13 @@ public class User {
 
     public void setEmailID(String emailID) {
         this.emailID = emailID;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
     }
 }

@@ -1,7 +1,9 @@
 package com.raji.daggerexample.di;
 
-import com.raji.SessionDataManager;
 import com.raji.daggerexample.MyApplication;
+import com.raji.daggerexample.auth.SessionDataManager;
+
+import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
@@ -12,6 +14,7 @@ import dagger.android.support.AndroidSupportInjectionModule;
  * Created by Raji on 7/15/20.
  * Golden Scent
  */
+@Singleton
 @Component(modules = {
         AndroidSupportInjectionModule.class,
         AppModule.class,

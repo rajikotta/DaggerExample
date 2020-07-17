@@ -1,5 +1,6 @@
-package com.raji.daggerexample.ui;
+package com.raji.daggerexample.auth;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -11,12 +12,10 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.bumptech.glide.RequestManager;
-import com.raji.daggerexample.AuthResource;
 import com.raji.daggerexample.R;
-import com.raji.daggerexample.User;
 import com.raji.daggerexample.databinding.ActivityAuthBinding;
 import com.raji.daggerexample.di.ViewModelFactory;
-import com.raji.daggerexample.ui.viewmodel.AuthViewModel;
+import com.raji.daggerexample.main.MainActivity;
 
 import javax.inject.Inject;
 
@@ -52,7 +51,7 @@ public class AuthActivity extends DaggerAppCompatActivity {
 
                     case AUTHENTICATED:
                         databinding.progressBar.setVisibility(View.GONE);
-                        Toast.makeText(AuthActivity.this, " authenticated", Toast.LENGTH_SHORT).show();
+                        navigateToMainActivity();
                         break;
                     case ERROR:
                         databinding.progressBar.setVisibility(View.GONE);
@@ -86,4 +85,10 @@ public class AuthActivity extends DaggerAppCompatActivity {
         });
 
     }
+
+    private void navigateToMainActivity() {
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
+    }
+
 }

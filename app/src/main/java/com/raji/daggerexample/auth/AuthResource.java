@@ -1,4 +1,4 @@
-package com.raji.daggerexample;
+package com.raji.daggerexample.auth;
 
 /**
  * Created by Raji on 7/16/20.
@@ -30,8 +30,8 @@ public class AuthResource<T> {
         return new AuthResource<>(data, null, Status.AUTHENTICATED);
     }
 
-    public static <V> AuthResource logout(V data, String errorMsg) {
-        return new AuthResource<>(data, null, Status.LOGOUT);
+    public static <V> AuthResource logout() {
+        return new AuthResource<>(null, null, Status.LOGOUT);
     }
 
     public enum Status {
